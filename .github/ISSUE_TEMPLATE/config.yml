@@ -1,0 +1,10 @@
+---
+# Ref: https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository#configuring-the-template-chooser
+blank_issues_enabled: false
+contact_links:
+  - name: Ansible Community Forums
+    url: https://forum.ansible.com/
+    about: General questions and community discussions about Ansible
+  - name: AAP Documentation
+    url: https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform
+    about: Official Red Hat Ansible Automation Platform documentation
