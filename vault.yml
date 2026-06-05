@@ -1,0 +1,16 @@
+---
+# Ansible Vault — encrypt this file before committing:
+#   ansible-vault encrypt vault.yml
+#
+# To edit in place after encryption:
+#   ansible-vault edit vault.yml
+#
+# To run the configure_aap playbook with vault:
+#   ansible-playbook playbooks/configure_aap.yml -e @vault.yml --ask-vault-pass
+#   ansible-playbook playbooks/configure_aap.yml -e @vault.yml --vault-password-file .vault_pass
+
+# --- AAP Configuration ---
+vault_aap_hostname: "aap-controller.example.com"         # e.g. aap.example.com
+vault_aap_token: "REDACTED_AAP_TOKEN"            # AAP personal access token or service account token
+
+# --- Other Project Secrets ---
