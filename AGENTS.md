@@ -80,11 +80,28 @@ Preferred implementation:
 
 ### Argument Specs
 
-`meta/argument_specs.yml` MAY be used for schema validation.
+Roles MUST include `meta/argument_specs.yml` for schema validation.
 
-It SHOULD NOT replace `tasks/validate.yml`.
+This file MUST:
 
-It SHOULD be used when it improves clarity and structure.
+- Define all role entry points (main, and any task files callable via `tasks_from`)
+- Declare all required and optional variables with types
+- Include descriptions for user-facing variables
+- Use appropriate validators (choices, min/max, regex, etc.)
+
+Argument specs provide:
+
+- Early validation before task execution
+- IDE autocomplete and documentation
+- Clear contract for role consumers
+- Reduced need for defensive programming in tasks
+
+`meta/argument_specs.yml` MUST NOT replace `tasks/validate.yml`.
+
+Both serve different purposes:
+
+- `argument_specs.yml`: Schema validation and documentation
+- `tasks/validate.yml`: Complex business logic validation, relationship checks, and custom assertions
 
 ---
 
