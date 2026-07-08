@@ -96,7 +96,7 @@ Argument specs provide:
 - Clear contract for role consumers
 - Reduced need for defensive programming in tasks
 
-`meta/argument_specs.yml` MUST NOT replace `tasks/validate.yml`.
+`meta/argument_specs.yml` SHOULD NOT replace `tasks/validate.yml`.
 
 Both serve different purposes:
 
