@@ -26,13 +26,13 @@ Typical requirements file:
 ---
 collections:
   - name: ansible.platform
-    version: ">=2.5.0"
+    version: ">=2.7.20260615"
   - name: ansible.hub
-    version: ">=1.0.0"
+    version: ">=1.0.6"
   - name: ansible.controller
-    version: ">=4.6.0"
+    version: ">=4.8.2"
   - name: ansible.eda
-    version: ">=2.5.0"
+    version: ">=2.12.1"
   - name: infra.aap_configuration
 ```
 
