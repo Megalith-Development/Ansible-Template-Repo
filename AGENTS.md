@@ -270,9 +270,36 @@ Guidelines:
 
 ### Testing for Filters
 
-Unit tests are RECOMMENDED.
+ALL custom Python filter plugins MUST include unit tests.
 
-They are not required, but SHOULD be suggested for complex filters.
+Requirements:
+
+- Each filter plugin MUST have a corresponding test file in `filter_plugins/tests/unit/`
+- Test files MUST follow the naming convention `test_<filter_name>.py`
+- Each filter function MUST have test coverage including:
+  - Normal operation test cases
+  - Edge cases (empty strings, None values, boundary conditions)
+  - Error handling (invalid inputs, type errors)
+- Tests MUST use pytest framework
+- Tests SHOULD achieve 95%+ code coverage
+
+Structure:
+
+```text
+filter_plugins/
+  tests/
+    pytest.ini              # Pytest configuration
+    requirements.txt        # Test dependencies
+    run_tests.sh           # Test runner script
+    unit/
+      test_example_filters.py
+      test_another_filters.py
+    fixtures/              # Optional: test data
+```
+
+Reference implementation:
+
+See `/Users/bgrimmet/Nextcloud/Projects/Ansible-Certificate-Renewal/tests` for a complete example of filter plugin testing structure.
 
 ---
 
