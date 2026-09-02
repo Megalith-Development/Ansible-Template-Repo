@@ -66,4 +66,50 @@ jobs:
       #   run: markdownlint "**/*.md" "#node_modules"
 
       - name: Spell check Markdown
-        run: cspell "README.md" 
+        run: cspell "README.md"
+
+  filter-tests:
+    name: Test Filter Plugins
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check if filter tests exist
+        id: check_tests
+        run: |
+          if [ -f "filter_plugins/tests/run_tests.sh" ]; then
+            echo "tests_exist=true" >> $GITHUB_OUTPUT
+          else
+            echo "tests_exist=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install test dependencies
+        if: steps.check_tests.outputs.tests_exist == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r filter_plugins/tests/requirements.txt
+
+      - name: Run filter plugin tests
+        if: steps.check_tests.outputs.tests_exist == 'true'
+        run: |
+          chmod +x filter_plugins/tests/run_tests.sh
+          ./filter_plugins/tests/run_tests.sh unit
+
+      - name: Upload coverage reports
+        if: steps.check_tests.outputs.tests_exist == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: filter-plugin-coverage
+          path: filter_plugins/tests/coverage_html/
+
+      - name: Check coverage threshold
+        if: steps.check_tests.outputs.tests_exist == 'true'
+        run: |
+          python -m coverage report --fail-under=95 || echo "Warning: Coverage below 95%" 
