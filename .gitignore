@@ -1,0 +1,130 @@
+# =============================================================================
+# Ansible Development Artifacts
+# =============================================================================
+
+# Retry files generated on playbook failures
+*.retry
+
+# Local Ansible home cache (Galaxy cache, tmp, persistent facts, cp sockets)
+.ansible/
+
+# Molecule scenario temp/state directories
+.molecule/
+
+# Ansible tmp/cache files
+.cache/
+
+# Vault password files (never commit vault secrets)
+.vault_pass
+.vault-password
+*.vault-pass
+
+# Inventory caches (e.g. fact caching, dynamic inventory script caches)
+inventory.cache/
+*.inventory.cache
+
+# Galaxy-downloaded roles installed into a local path
+# (e.g. `ansible-galaxy role install -r roles/requirements.yml -p roles/`)
+# roles/* would be too broad since custom roles live here too, so
+# adopters using this pattern should scope it to their own external role names.
+
+# -----------------------------------------------------------------------------
+# Collections handling (template guidance)
+# -----------------------------------------------------------------------------
+# This template repo tracks collections/ by default: Galaxy collection
+# installs are expected to happen OUTSIDE the repo (system path, virtualenv,
+# or baked into the Execution Environment), so any collection checked into
+# collections/ is assumed to be a local, in-repo collection.
+#
+# Depending on your workflow, choose ONE of the following strategies instead:
+#
+# Option A (default, active): Don't ignore anything under collections/.
+#   Galaxy installs happen outside the repo; local collections are tracked
+#   as-is. No changes needed below.
+#
+# Option B: Ignore the Galaxy download path if you install collections
+#   in-repo via `ansible-galaxy collection install -r collections/requirements.yml -p collections/`.
+#   Uncomment the line below:
+# collections/ansible_collections/
+#
+# Option C: Ignore the download path but carve out a specific local
+#   namespace with a negation pattern (use if you mix local and
+#   Galaxy-downloaded collections under the same ansible_collections/ tree):
+# collections/ansible_collections/
+# !collections/ansible_collections/<your_namespace>/
+# !collections/ansible_collections/<your_namespace>/**
+
+# =============================================================================
+# Python Development Artifacts
+# =============================================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Tox
+.tox/
+
+# Mypy
+.mypy_cache/
+
+# =============================================================================
+# Execution Environment Build Artifacts
+# =============================================================================
+
+# ansible-builder build context output
+context/
+
+# =============================================================================
+# IDE / Editor Files
+# =============================================================================
+
+# VSCode (workspace-local settings; not shared config)
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Vim/Emacs swap and backup files
+*.swp
+*.swo
+*~
+*.bak
+
+# =============================================================================
+# Platform Artifacts
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+.fuse_hidden*
+.Trash-*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
