@@ -128,3 +128,7 @@ context/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# AI Tooling
+.coverage
+.serena/
