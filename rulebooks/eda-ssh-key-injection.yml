@@ -8,7 +8,5 @@
     - name: Controller Rule
       condition: event.i == 1
       action:
-        run_module: 
-          name: ansible.builtin.command 
-          module_args: 
-            cmd: "cat {{ lookup('env', 'SSH\_KEY\_PATH') }}"
+        debug:
+          msg: "{{ lookup('file', lookup('env', 'SSH\_KEY\_PATH')) }}"
